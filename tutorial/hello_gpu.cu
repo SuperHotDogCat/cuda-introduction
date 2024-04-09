@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <cuda_runtime.h>
 #include <cuda.h>
+
 /*
 Naming rule: function: Upper Camel, Variable: snake 
 */
-
-// nvcc hello_gpu.cu -arch sm_86
 
 __device__ void gpuAdd(int *number){
     *number += 1;
