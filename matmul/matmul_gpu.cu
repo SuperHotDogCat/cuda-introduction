@@ -10,5 +10,4 @@ void init_matrix(double *mat, double init_num, int dim){
 
 int main(int argc, char **argv){
     int i, j, n;
-    double input_mat1 = (double)
 }
