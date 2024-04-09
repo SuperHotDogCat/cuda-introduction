@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
+#include <time.h> 
+#include <linux/time.h> // for my linux, #include<time.h>
 
 void init_matrix(double *mat, double init_num, int dim){
     // mat is expected to be a 2-dimentional matrix expressed by a 1-dimentional array. 
