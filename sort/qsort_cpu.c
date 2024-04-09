@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <linux/time.h>
 
 int compare_value(const void *value1, const void *value2){
     int cmpvalue1 = *(int *) value1;
