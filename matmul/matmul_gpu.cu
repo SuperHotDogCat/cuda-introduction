@@ -1,7 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include <time.h> 
 #include <cuda_runtime.h>
+
+//Macro for checking cuda errors following a cuda launch or api call
+#define cudaCheckError() {                                          \
+ cudaError_t e = cudaGetLastError();                                 \
+ if(e!=cudaSuccess) {                                              \
+   printf("Cuda failure %s:%d: '%s'\n",__FILE__,__LINE__,cudaGetErrorString(e));           \
+   exit(0); \
+ }                                                                 \
+}
 
 /*
 
@@ -40,9 +50,9 @@ double calculateElapsedTime(struct timespec start_time, struct timespec end_time
 __global__ void matMulGpu(double *input_mat1, double *input_mat2, double *output_mat, int dim){
     // mat is expected to be a 2-dimentional matrix expressed by a 1-dimentional array. 
     // each dimention of mat is expected to be the same.
-    int i = threadIdx.y + blockDim.y * threadIdx.y;
-    int j = threadIdx.x + blockDim.x * threadIdx.x;
-
+    int i = threadIdx.y + blockDim.y * blockIdx.y;
+    int j = threadIdx.x + blockDim.x * blockIdx.x;
+    
     if (i >= dim || j >= dim) return;
     // 3重ループ可能では?
     for (int k = 0; k < dim; ++k){
@@ -92,17 +102,24 @@ int main(int argc, char **argv){
     cudaMemcpy(d_input_mat2, input_mat2, sizeof(double)*n*n, cudaMemcpyHostToDevice);
     cudaMemcpy(d_output_mat, output_mat, sizeof(double)*n*n, cudaMemcpyHostToDevice);
 
-    dim3 block(n, n);
+    int num_threads = 32;
+    assert(num_threads * num_threads < 1024 + 1);
+
+    dim3 block(num_threads, num_threads);
     dim3 grid((n+block.x-1)/block.x, (n+block.y-1)/block.y);
+
     clock_gettime(CLOCK_REALTIME, &start_time);
     matMulGpu<<<grid, block>>>(d_input_mat1, d_input_mat2, d_output_mat, n);
-    cudaMemcpy(output_mat, d_output_mat, sizeof(double)*n*n, cudaMemcpyDeviceToHost); 
     cudaDeviceSynchronize(); // Wait until GPU processing finishs.
+    cudaCheckError();
+    cudaMemcpy(output_mat, d_output_mat, sizeof(double)*n*n, cudaMemcpyDeviceToHost); 
     clock_gettime(CLOCK_REALTIME, &end_time);
     cudaFree(d_input_mat1);
     cudaFree(d_input_mat2);
     cudaFree(d_output_mat);
 
-    debug_matrix(output_mat, n); // weird output
+    //debug_matrix(output_mat, n); // weird output
+    printf("elapsed time %f\n", calculateElapsedTime(start_time, end_time));
+
     return 0;
 }

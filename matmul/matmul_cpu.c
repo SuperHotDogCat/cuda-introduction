@@ -59,6 +59,6 @@ int main(int argc, char **argv){
     clock_gettime(CLOCK_REALTIME, &start_time);
     matMulCpu(input_mat1, input_mat2, output_mat, n);
     clock_gettime(CLOCK_REALTIME, &end_time);
-    debug_matrix(output_mat, n);
+    //debug_matrix(output_mat, n);
     printf("elapsed time %f\n", calculateElapsedTime(start_time, end_time));
 }
