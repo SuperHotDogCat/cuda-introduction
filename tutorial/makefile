@@ -1,7 +1,7 @@
 CC := gcc
 NVCC := nvcc
 CFLAGS := -Wall -Wextra
-NVCCFLAGS := -arch=sm_86
+NVCCFLAGS := -arch=sm_89
 
 # .c ファイルから実行ファイルを生成
 C_EXECUTABLES := $(patsubst %.c,%,$(wildcard *.c))
