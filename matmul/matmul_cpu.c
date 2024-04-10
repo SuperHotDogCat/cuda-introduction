@@ -33,7 +33,7 @@ void terminate(const char *error_sentence){
     exit(1);
 }
 
-void debug_matrix(double *mat, int dim){
+void debugMatrix(double *mat, int dim){
     for (int i = 0; i < dim; ++i){
         for (int j = 0; j < dim; ++j){
             printf("%f ", mat[i*dim+j]);
@@ -44,7 +44,7 @@ void debug_matrix(double *mat, int dim){
 
 int main(int argc, char **argv){
     if (argc < 2){
-        terminate("Usage check_dimention1d dim_size");
+        terminate("Usage matmul_cpu dim_size");
     }
 
     int n = atoi(argv[1]);
@@ -59,6 +59,6 @@ int main(int argc, char **argv){
     clock_gettime(CLOCK_REALTIME, &start_time);
     matMulCpu(input_mat1, input_mat2, output_mat, n);
     clock_gettime(CLOCK_REALTIME, &end_time);
-    //debug_matrix(output_mat, n);
+    //debugMatrix(output_mat, n);
     printf("elapsed time %f\n", calculateElapsedTime(start_time, end_time));
 }

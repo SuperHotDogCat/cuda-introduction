@@ -16,7 +16,7 @@ void terminate(const char *error_sentence){
 
 int main(int argc, char **argv){
     if (argc < 5){
-        terminate("Usage check_dimention1d grid_size, block_size");
+        terminate("Usage check_dimention2d grid_size, block_size");
     }
 
     //device set up

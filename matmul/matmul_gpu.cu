@@ -17,19 +17,19 @@
 
 行列積の場合
 
-for (int col = 0; i < nx; ++i){
-    for (int row = 0; j < ny; ++j){
-        // colとrowを用いた処理
+for (int i = 0; i < nx; ++i){
+    for (int j = 0; j < ny; ++j){
+        // iとjを用いた処理
     }
 }
 
 --------CUDA化--------
 
-int col = threadIdx.y + blockDim.y * threadIdx.y;
-int row = threadIdx.x + blockDim.x * threadIdx.x;
-//colとrowを用いた処理
+int i = threadIdx.y + blockDim.y * blockIdx.y; <- xかyかはiとjの使われ方による
+int j = threadIdx.x + blockDim.x * blockIdx.x;
+//iとjを用いた処理
 
-p59とかにあった
+インプレンス社: CUDA Cのp59とかにあった
 */
 
 void initMatrix(double *mat, double init_num, int dim){
@@ -65,7 +65,7 @@ void terminate(const char *error_sentence){
     exit(1);
 }
 
-void debug_matrix(double *mat, int dim){
+void debugMatrix(double *mat, int dim){
     for (int i = 0; i < dim; ++i){
         for (int j = 0; j < dim; ++j){
             printf("%f ", mat[i*dim+j]);
@@ -76,7 +76,7 @@ void debug_matrix(double *mat, int dim){
 
 int main(int argc, char **argv){
     if (argc < 2){
-        terminate("Usage check_dimention1d dim_size");
+        terminate("Usage matmul_gpu dim_size");
     }
 
     //device set up
@@ -118,7 +118,7 @@ int main(int argc, char **argv){
     cudaFree(d_input_mat2);
     cudaFree(d_output_mat);
 
-    //debug_matrix(output_mat, n); // weird output
+    //debugMatrix(output_mat, n); 
     printf("elapsed time %f\n", calculateElapsedTime(start_time, end_time));
 
     return 0;

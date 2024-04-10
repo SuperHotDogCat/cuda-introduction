@@ -95,7 +95,7 @@ void terminate(const char *error_sentence){
 
 int main(int argc, char **argv){
     if (argc < 2){
-        terminate("Usage ./qsort_cpu N");
+        terminate("Usage ./bitonicsort_gpu N");
     }
     //device set up
     int device_id = 0;
