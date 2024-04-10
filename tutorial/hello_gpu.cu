@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <cuda_runtime.h>
-#include <cuda.h>
 
 /*
 Naming rule: function: Upper Camel, Variable: snake 
