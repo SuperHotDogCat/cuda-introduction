@@ -1,11 +1,12 @@
 # cuda-introduction
+宿題はRadix Sortの実装
 # Naming Rule
 ## upperCamelCase
 - function: CUDA API named most of its functions under this case.
 ## snake_case
 - variable
 - source file
-## Reference
+# Reference
 <p><a href="https://docs.nvidia.com/cuda/cuda-c-programming-guide/index.html">CUDA C++ Programming Guide</a></p>
 <p><a href="https://www.nvidia.co.jp/docs/IO/59373/VolumeI.pdf">Technical Training</a></p>
 <p><a href="https://http.download.nvidia.com/developer/cuda/jp/CUDA_Programming_Basics_PartI_jp.pdf">CUDA Programming Basics I</a></p>
