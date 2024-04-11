@@ -15,3 +15,7 @@
 <p><a href="https://www.gsic.titech.ac.jp/supercon/main/attwiki/index.php?plugin=attach&refer=SupercomputingContest2016&openfile=gpu-prog16-1ow.pdf">GPUプログラミング・基礎編 東京科学大(旧 東工大)</a></p>
 <p><a href="https://co-crea.jp/wp-content/uploads/2016/07/File_2.pdf">CUDAの導入，CUDAの基礎 茨城大学</p>
 <p><a href="https://tail-island.github.io/cuda-primer/">CUDA Primer</p>
+<p><a href="https://www.butsuri.it-chiba.ac.jp/~yasutake/matter/tominaga.pdf">CUDAを用いた数値解析の高速化</a></p>
+<p><a href="http://www.sim.gsic.titech.ac.jp/Japanese/GPU/pdf/20131226717065-474-0-30.pdf">thread の実行方式とWarp</a></p>
+<p><a href="https://proc-cpuinfo.fixstars.com/2017/07/acceleration-of-reduce-banding-filter-by-cuda-02/">CUDAによるバンディング低減フィルタの高速化（2）</a></p>
+<p><a href="https://yusuke-ujitoko.hatenablog.com/entry/2016/02/05/012618">【CUDA】Shared memoryの動的な確保</a></p>
