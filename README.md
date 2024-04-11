@@ -1,5 +1,5 @@
 # cuda-introduction
-宿題はRadix Sortの実装
+発表資料と宿題(大学生のみ)は[Speaker Deck](https://speakerdeck.com/superhotdogcat/cudawohong-rou)にあります。
 # Naming Rule
 ## upperCamelCase
 - function: CUDA API named most of its functions under this case.
