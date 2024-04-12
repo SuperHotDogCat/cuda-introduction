@@ -32,8 +32,8 @@ void countingSort(int *arr, long size, int exp){
 
     for (long i = size - 1; i >= 0; i--){
         int index = arr[i] / exp;
-        output[count[index % 10] - 1] = arr[i];
-        count[index % 10] -= 1;
+        output[count[index % NUM_DIGITS] - 1] = arr[i];
+        count[index % NUM_DIGITS] -= 1;
     }
 
     for (long i = 0; i < size; ++i){
@@ -48,7 +48,7 @@ void radixSort(int *arr,long size){
 
     while (max_number / exp > 0){
         countingSort(arr, size, exp);
-        exp *= 10;
+        exp *= NUM_DIGITS;
     }
 }
 
@@ -79,7 +79,7 @@ void terminate(const char *error_sentence){
 
 int main(int argc, char **argv){
     if (argc < 2){
-        terminate("Usage ./radixsort N");
+        terminate("Usage ./radixsort_cpu N");
     }
     
     long size = atol(argv[1]);
