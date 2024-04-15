@@ -1,3 +1,6 @@
+// GPU-Parallelized
+// Radix-2 (Fixed) Sort
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
